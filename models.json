@@ -1,0 +1,490 @@
+[
+  {
+    "name": "RouteLLM",
+    "externalApplicationId": "7d717b806",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "ROUTE_LLM"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "isCodellmChatmodeSupported": true,
+    "status": "STOPPED",
+    "id": "RouteLLM",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "GPT-4.1",
+    "externalApplicationId": "84f830890",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "OPENAI_GPT4_1"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "isCodellmChatmodeSupported": true,
+    "status": "STOPPED",
+    "id": "GPT-4.1",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Claude Sonnet 4",
+    "externalApplicationId": "8c7ee591a",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "CLAUDE_V4_SONNET"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": true,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "isCodellmChatmodeSupported": true,
+    "status": "STOPPED",
+    "id": "Claude Sonnet 4",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Claude Sonnet 4 Thinking",
+    "externalApplicationId": "94059a9a4",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "CLAUDE_V4_SONNET_THINKING"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Claude Sonnet 4 Thinking",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Claude Sonnet 3.7",
+    "externalApplicationId": "9b8c4fa2e",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "CLAUDE_V3_7_SONNET"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isExpensive": true,
+    "isVisible": true,
+    "hasThinkingOption": true,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "isCodellmChatmodeSupported": true,
+    "status": "STOPPED",
+    "id": "Claude Sonnet 3.7",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Claude Opus 4",
+    "externalApplicationId": "a31304ab8",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "CLAUDE_V4_OPUS"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": true,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Claude Opus 4",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Claude Opus 4 Thinking",
+    "externalApplicationId": "aa99b9b42",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "CLAUDE_V4_OPUS_THINKING"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Claude Opus 4 Thinking",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Gemini 2.5 Pro 0605",
+    "externalApplicationId": "dcaa1d6a0",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "GEMINI_2_5_PRO_0605"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isDeprecated": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Gemini 2.5 Pro 0605",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Gemini 2.5 Pro",
+    "externalApplicationId": "b2206ebcc",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "GEMINI_2_5_PRO"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "isCodellmChatmodeSupported": true,
+    "status": "STOPPED",
+    "id": "Gemini 2.5 Pro",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Gemini 2.5 Flash",
+    "externalApplicationId": "b9a723c56",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "GEMINI_2_5_FLASH"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": true,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Gemini 2.5 Flash",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "o4 Mini High",
+    "externalApplicationId": "c12dd8ce0",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "OPENAI_O4_MINI_HIGH"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "o4 Mini High",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "o3 High",
+    "externalApplicationId": "c8b48dd6a",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "OPENAI_O3_HIGH"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "o3 High",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Deepseek R1 0528",
+    "externalApplicationId": "d03b42df4",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "DEEPSEEK_R1"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "isCodellmChatmodeSupported": true,
+    "status": "STOPPED",
+    "id": "Deepseek R1 0528",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Deepseek V3.1",
+    "externalApplicationId": "d7c1f7e7e",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "DEEPSEEK_V3"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Deepseek V3.1",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Gemini 2.0 Flash",
+    "externalApplicationId": "df48acf08",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "GEMINI_2_FLASH"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isDeprecated": true,
+    "isVisible": true,
+    "hasThinkingOption": true,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Gemini 2.0 Flash",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "GPT-4o Mini",
+    "externalApplicationId": "e6cf61f92",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "OPENAI_GPT4O_MINI"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "GPT-4o Mini",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Grok 3",
+    "externalApplicationId": "ee561701c",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "XAI_GROK_3"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "isCodellmChatmodeSupported": true,
+    "status": "STOPPED",
+    "id": "Grok 3",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Grok 3 Mini",
+    "externalApplicationId": "f5dccc0a6",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "XAI_GROK_3_MINI"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Grok 3 Mini",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Llama4 Maverick",
+    "externalApplicationId": "fd6381130",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "LLAMA4_MAVERICK"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Llama4 Maverick",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Abacus.AI Smaug",
+    "externalApplicationId": "104ea361ba",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "ABACUS_SMAUG3"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Abacus.AI Smaug",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Qwen3 235B A22B",
+    "externalApplicationId": "10c70eb244",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "QWEN3_235B_A22B"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Qwen3 235B A22B",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "GPT-4.1 Mini",
+    "externalApplicationId": "113f7a02ce",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "OPENAI_GPT4_1_MINI"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "GPT-4.1 Mini",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "Perplexity Pro",
+    "externalApplicationId": "11b7e55358",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "SONAR_PRO"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isExpensive": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "Perplexity Pro",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "SearchLLM",
+    "externalApplicationId": "12a8bbf46c",
+    "deploymentId": "93af70592",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "OPENAI_GPT4O",
+      "isSearchLlm": true
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": false,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "SearchLLM",
+    "owned_by": "abacus"
+  },
+  {
+    "name": "o3 Pro",
+    "externalApplicationId": "c911ffb10",
+    "deploymentId": "8c28bb508",
+    "description": "",
+    "isAgent": 0,
+    "predictionOverrides": {
+      "llmName": "OPENAI_O3_PRO"
+    },
+    "isSystemCreated": 1,
+    "isCustomizable": true,
+    "isExpensive": true,
+    "isVisible": true,
+    "hasThinkingOption": false,
+    "onlyImageGenEnabled": false,
+    "projectId": "ad93e31fc",
+    "status": "STOPPED",
+    "id": "o3 Pro",
+    "owned_by": "abacus"
+  }
+]

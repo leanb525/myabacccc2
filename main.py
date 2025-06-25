@@ -7,7 +7,11 @@ import threading
 import requests
 import base64
 import re
+import urllib3
 from typing import Any, Dict, List, Optional, TypedDict, Union
+
+# 禁用SSL验证警告
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from fastapi import FastAPI, HTTPException, Depends, UploadFile, File
 from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -173,7 +177,9 @@ def get_session_token(_u_p: str, _s_p: str) -> str:
         "Cookie": f'_u_p="{_u_p}"; _s_p="{_s_p}"',
     }
 
-    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    print(f"[REQUEST] get_session_token: URL={url}, Headers={headers}, Payload={payload}")
+    response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
+    print(f"[RESPONSE] get_session_token: Status={response.status_code}, Response={response.text[:200]}...")
     response.raise_for_status()
     return response.json()["result"]["sessionToken"]
 
@@ -190,7 +196,9 @@ def get_models_from_account(_u_p: str, _s_p: str) -> List[Dict[str, Any]]:
         "Cookie": f'_u_p="{_u_p}"; _s_p="{_s_p}"',
     }
 
-    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    print(f"[REQUEST] get_models_from_account: URL={url}, Headers={headers}, Payload={payload}")
+    response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
+    print(f"[RESPONSE] get_models_from_account: Status={response.status_code}, Response={response.text[:200]}...")
     response.raise_for_status()
     return response.json()["result"]
 
@@ -310,7 +318,7 @@ def get_conversation_key(messages: List[ChatMessage]) -> Optional[str]:
         return None
 
 
-def get_deployment_conversation_id(_u_p: str, session_token: str) -> str:
+def get_deployment_conversation_id(_u_p: str, _s_p: str, session_token: str) -> str:
     """Create new deployment conversation ID"""
     url = "https://apps.abacus.ai/api/createDeploymentConversation"
     payload = {
@@ -324,10 +332,13 @@ def get_deployment_conversation_id(_u_p: str, session_token: str) -> str:
         "Accept-Encoding": "gzip, deflate, br, zstd",
         "Content-Type": "application/json",
         "session-token": session_token,
-        "Cookie": f'_u_p="{_u_p}"',
+        "Cookie": f'_u_p="{_u_p};_s_p={_s_p}"',
     }
 
-    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    print(f"[REQUEST] get_deployment_conversation_id: URL={url}, Headers={headers}, Payload={payload}")
+    response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
+    print(
+        f"[RESPONSE] get_deployment_conversation_id: Status={response.status_code}, Response={response.text[:200]}...")
     response.raise_for_status()
     return response.json()["result"]["deploymentConversationId"]
 
@@ -368,7 +379,9 @@ def upload_file_to_abacus(_u_p: str, session_token: str, deployment_id: str,
         "Cookie": f'_u_p="{_u_p}"',
     }
 
-    response = requests.post(url, data=payload, files=files, headers=headers)
+    print(f"[REQUEST] upload_file_to_abacus: URL={url}, Headers={headers}, Payload={payload}")
+    response = requests.post(url, data=payload, files=files, headers=headers, verify=False)
+    print(f"[RESPONSE] upload_file_to_abacus: Status={response.status_code}, Response={response.text[:200]}...")
     response.raise_for_status()
 
     request_id = response.json()["request_id"]
@@ -384,7 +397,10 @@ def upload_file_to_abacus(_u_p: str, session_token: str, deployment_id: str,
     }
 
     for _ in range(10):
-        status_response = requests.get(status_url, headers=status_headers)
+        print(f"[REQUEST] upload_status_check: URL={status_url}, Headers={status_headers}")
+        status_response = requests.get(status_url, headers=status_headers, verify=False)
+        print(
+            f"[RESPONSE] upload_status_check: Status={status_response.status_code}, Response={status_response.text[:200]}...")
         if status_response.json()["status"] == "SUCCESS":
             return status_response.json()["result"]["result"]["docInfos"]
         time.sleep(1)
@@ -665,7 +681,8 @@ async def chat_completions(
         try:
             # Create a new conversation session
             session_token = ensure_session_token(account)
-            new_deployment_conversation_id = get_deployment_conversation_id(account["_u_p"], session_token)
+            new_deployment_conversation_id = get_deployment_conversation_id(account["_u_p"], account["_s_p"],
+                                                                            session_token)
             log_debug(f"Created new session {new_deployment_conversation_id[:10]} on account {account_index}")
 
             response = await execute_abacus_request(
@@ -676,7 +693,8 @@ async def chat_completions(
         except requests.HTTPError as e:
             status_code = getattr(e.response, "status_code", 500)
             error_detail = getattr(e.response, "text", str(e))
-            print(f"Abacus API error ({status_code}): {error_detail}")
+            print(f"[ERROR] Abacus API error ({status_code}): {error_detail}")
+            print(f"[ERROR] Request failed for account {account_index}, _u_p={account['_u_p'][:10]}...")
 
             with account_rotation_lock:
                 if status_code in [401, 403]:
@@ -686,11 +704,15 @@ async def chat_completions(
                 else:  # Don't retry for other client-side errors
                     raise HTTPException(status_code=status_code, detail=error_detail)
         except Exception as e:
-            print(f"Request error: {e}")
+            print(f"[ERROR] Request error: {e}")
+            print(f"[ERROR] Request failed for account {account_index}, _u_p={account['_u_p'][:10]}...")
             with account_rotation_lock:
                 account["error_count"] += 1
 
     # All attempts failed
+    print(f"[ERROR] All Abacus accounts failed. Valid accounts: {sum(1 for acc in ABACUS_ACCOUNTS if acc['is_valid'])}")
+    print(f"[ERROR] Account error counts: {[(i, acc['error_count']) for i, acc in enumerate(ABACUS_ACCOUNTS)]}")
+    print(f"[ERROR] Account validity: {[(i, acc['is_valid']) for i, acc in enumerate(ABACUS_ACCOUNTS)]}")
     raise HTTPException(status_code=503, detail="所有Abacus账户均不可用，请检查账户状态或稍后重试。")
 
 
@@ -735,10 +757,14 @@ async def execute_abacus_request(
         "Accept-Encoding": "gzip, deflate, br, zstd",
         "Content-Type": "application/json",
         "session-token": session_token,
-        "Cookie": f'_u_p="{account["_u_p"]}"',
+        "Cookie": f'_u_p="{account["_u_p"]};_s_p={account["_s_p"]}"',
     }
 
     log_debug(f"Sending request to Abacus with account {account_index} for session {deployment_conversation_id[:10]}")
+
+    print(f"[REQUEST] execute_abacus_request: URL=https://apps.abacus.ai/api/_chatLLMSendMessageSSE")
+    print(f"[REQUEST] Headers={headers}")
+    print(f"[REQUEST] Payload={json.dumps(payload)[:500]}...")
 
     response = requests.post(
         "https://apps.abacus.ai/api/_chatLLMSendMessageSSE",
@@ -746,7 +772,9 @@ async def execute_abacus_request(
         headers=headers,
         stream=True,
         timeout=120.0,
+        verify=False,
     )
+    print(f"[RESPONSE] execute_abacus_request: Status={response.status_code}")
     response.raise_for_status()
 
     # Prepare info for caching upon successful response
