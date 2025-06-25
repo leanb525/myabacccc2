@@ -1,4 +1,4 @@
-name = "python-fastapi-worker"
+name = "abccc2"
 compatibility_date = "2025-06-25"
 compatibility_flags = ["python_workers"]
 main = "main.py"
